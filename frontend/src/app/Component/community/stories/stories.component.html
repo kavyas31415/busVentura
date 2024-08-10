@@ -1,0 +1,36 @@
+<div class="container">
+    <h2 class="title">Travel Stories</h2>
+    <div class="card-container">
+      <div class="text-container">
+        <p class="travel-stories-text">
+          Discover a world of travel stories on the BusVentura community site. Dive into personal accounts from travelers who share their unique experiences and memorable moments from bus journeys. Each story provides a vivid snapshot of their adventures, offering inspiration and insight into the diverse travel experiences within our community.
+        </p>
+      </div>
+      <div class="card">
+        <p-galleria 
+          [value]="images" 
+          [responsiveOptions]="responsiveOptions" 
+          [containerStyle]="{ 'max-width': '700px', 'margin': '0 auto' }" 
+          [numVisible]="5"
+          [autoPlay]="true"
+          [showItemNavigators]="true"
+        >
+          <ng-template pTemplate="item" let-item>
+            <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+          </ng-template>
+          <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center">
+              <img [src]="item.thumbnailImageSrc" style="display: block;" />
+            </div>
+          </ng-template>
+          <ng-template pTemplate="caption" let-item>
+            <div class="caption">
+              <h4 class="caption-title">{{ item.title }}</h4>
+              <p class="caption-text">{{ item.alt }}</p>
+            </div>
+          </ng-template>
+        </p-galleria>
+      </div>
+    </div>
+  </div>
+  

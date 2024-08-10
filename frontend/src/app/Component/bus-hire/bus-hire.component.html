@@ -1,0 +1,114 @@
+<section class="relative h-screen overflow-hidden flex items-center justify-center" style="background-image: url(./assets/hirebus.png); background-size: cover; background-position: center;">
+  <div class="relative z-10 flex flex-col items-center w-full max-w-[1400px] text-center" >
+    <h1  class="text-xl md:text-2xl lg:text-2xl text-white font-bold mb-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.2); color: #ffffff; ">
+      Find the Perfect Bus for Your Next Big Trip!
+    </h1>
+   
+
+    <!-- Bus hire section starts here -->
+    <form [formGroup]="hireForm" (ngSubmit)="submit()" class="w-[90%] sm:w-[80%] lg:w-[70%] mt-4 bg-white rounded-lg shadow-lg p-6">
+      <!-- Hiring details section -->
+      <div class="space-y-4">
+        <!-- From destination -->
+        <div class="flex items-center border-b border-gray-300 pb-3">
+          <i class="fa-solid fa-bus-simple text-gray-500 text-sm mr-2"></i>
+          <input class="outline-none w-full px-2 py-1 text-xs border rounded" type="text" placeholder="From" [matMenuTriggerFor]="menu" formControlName="from">
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="fromEvent('Delhi')">Delhi</button>
+            <button mat-menu-item (click)="fromEvent('Mumbai')">Mumbai</button>
+            <button mat-menu-item (click)="fromEvent('Bangalore')">Bangalore</button>
+            <button mat-menu-item (click)="fromEvent('Kolkata')">Kolkata</button>
+            <button mat-menu-item (click)="fromEvent('Chennai')">Chennai</button>
+          </mat-menu>
+        </div>
+
+        <!-- To destination -->
+        <div class="flex items-center border-b border-gray-300 pb-3">
+          <i class="fa-solid fa-person-walking-luggage text-gray-500 text-sm mr-2"></i>
+          <input class="outline-none w-full px-2 py-1 text-xs border rounded" type="text" placeholder="To" [matMenuTriggerFor]="menu2" formControlName="to">
+          <mat-menu #menu2="matMenu">
+            <button mat-menu-item (click)="toEvent('Jaipur')">Jaipur</button>
+            <button mat-menu-item (click)="toEvent('Goa')">Goa</button>
+            <button mat-menu-item (click)="toEvent('Mysore')">Mysore</button>
+            <button mat-menu-item (click)="toEvent('Darjeeling')">Darjeeling</button>
+            <button mat-menu-item (click)="toEvent('Pondicherry')">Pondicherry</button>
+          </mat-menu>
+        </div>
+
+        <!-- Pickup Date & Time -->
+        <div class="flex flex-col space-y-4 border-b border-gray-300 pb-3">
+          <div class="flex items-center">
+            <i class="fa-solid fa-calendar-days text-gray-500 text-sm mr-2"></i>
+            <input matInput class="outline-none w-full px-2 py-1 text-xs border rounded" placeholder="Pickup Date" [matDatepicker]="pickupDatePicker" formControlName="pickupDate" (click)="pickupDatePicker.open()" (dateChange)="matchDate($event)">
+            <mat-datepicker #pickupDatePicker></mat-datepicker>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-clock text-gray-500 text-sm mr-2"></i>
+            <input type="time" class="outline-none w-full px-2 py-1 text-xs border rounded" placeholder="Pickup Time" formControlName="pickupTime">
+          </div>
+        </div>
+
+        <!-- Bus Size -->
+        <div class="flex items-center border-b border-gray-300 pb-3">
+          <i class="fa-solid fa-bus text-gray-500 text-sm mr-2"></i>
+          <select class="outline-none w-full px-2 py-1 text-xs border rounded" formControlName="size">
+            <option value="" disabled selected>Select Bus Size</option>
+            <option value="small">Small Bus</option>
+            <option value="medium">Medium Bus</option>
+            <option value="large">Large Bus</option>
+          </select>
+        </div>
+
+        <!-- Amenities -->
+        <div class="flex items-center border-b border-gray-300 pb-3">
+          <i class="fa-solid fa-couch text-gray-500 text-sm mr-2"></i>
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Amenities</mat-label>
+            <mat-select formControlName="amenities" multiple>
+              <mat-option value="wifi">WiFi</mat-option>
+              <mat-option value="ac">AC</mat-option>
+              <mat-option value="tv">TV</mat-option>
+              <mat-option value="charger">Charger</mat-option>
+              <mat-option value="refreshments">Refreshments</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full py-2 px-4 bg-[#2d5128] text-white rounded-lg shadow hover:bg-[#1e3a1a]">Find Buses</button>
+      </div>
+    </form>
+
+    <!-- Display matched buses -->
+    <div #resultDiv *ngIf="isVisible" class="w-full max-w-[1600px] mt-6 min-h-[600px] flex flex-col space-y-4 overflow-auto">
+      <h1 class="text-2xl font-bold text-[#ffffff] mb-4" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);">
+        Available Buses
+      </h1>
+      
+      <div class="flex flex-wrap gap-4">
+        <div *ngFor="let bus of matchedbus" class="bus-card bg-white rounded-lg shadow-lg p-6 border border-[#2d5128] flex flex-col w-full sm:w-[48%] lg:w-[30%]">
+          <h3 class="text-xl font-semibold mb-2">{{ bus.operatorName }} - {{ bus.busType }}</h3>
+          
+          <!-- Average Rating -->
+          <p class="text-sm mb-1">Average Rating: {{ calculateAverageRating(bus.rating) | number:'1.1-1' }}</p>
+          <p class="text-sm mb-1">Total Seats: {{ bus.totalSeats }}</p>
+          <p class="text-sm mb-3">Fare: ₹{{ bus.fare | number:'1.2-2' }}</p> <!-- Display Fare -->
+          
+          <!-- Images -->
+          <div *ngIf="getImagesForOperator(bus.operatorName).length > 0" class="images-container mt-4">
+            <img *ngFor="let image of getImagesForOperator(bus.operatorName)" [src]="image" alt="Bus Image">
+          </div>
+          
+          <!-- Hire Button -->
+          <button class="py-2 px-4 bg-[#2d5128] text-white rounded-lg shadow hover:bg-[#1e3a1a]" (click)="hireBus(bus)">Hire</button>
+
+          <!-- Display Driver Contact Information -->
+          <div *ngIf="hiredBus === bus" class="mt-4 text-sm">
+            <p class="font-semibold">Bus {{ hiredBus.operatorName }} has been hired!</p>
+            <p>Contact: {{ contactInfo }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+/* Overall container for the form and tips list */
+.tips-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f4f9f4; /* Light green background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the form section */
+  .form-section {
+    flex: 1;
+    margin-right: 20px;
+    background-color: #e8f5e9; /* Slightly darker green */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the tips list section */
+  .tips-list {
+    flex: 2;
+    background-color: #ffffff; /* White background for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* General title styling */
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2d5128; /* Dark green color */
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  /* Form styling */
+  .tip-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tip-form input,
+  .tip-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #2d5128 ; /* Light green border */
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .tip-form input:focus,
+  .tip-form textarea:focus {
+    border-color: #2d5128  /* Green border on focus */
+    outline: none;
+  }
+  
+  .tip-form button {
+    padding: 12px 20px;
+    background-color: #2d5128 ; /* Green button background */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .tip-form button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+  }
+  
+  /* Styling for individual tips */
+  .tips-list .tip {
+    border: 1px solid #c8e6c9; /* Light green border */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background-color: #fafafa; /* Slightly off-white background */
+  }
+  
+  .tip h2 {
+    margin-top: 0;
+    color: #2d5128 ; /* Dark green color */
+  }
+  
+  .tip p {
+    color: #2d5128; /* Dark grey text color */
+  }
+  

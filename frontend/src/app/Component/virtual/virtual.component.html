@@ -1,0 +1,17 @@
+<div class="virtual-tour-container">
+  <div class="bus-list">
+    <ul>
+      <li *ngFor="let bus of buses" class="bus-card">
+        <div class="bus-info">
+          <h3 class="bus-name">{{ bus.operatorName }}</h3>
+          <button (click)="toggleTour(bus)" class="tour-button">
+            View 360° Tour
+          </button>
+        </div>
+        <div class="virtual-tour" *ngIf="selectedBus === bus && showTour">
+          <div id="panorama" class="panorama-container"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

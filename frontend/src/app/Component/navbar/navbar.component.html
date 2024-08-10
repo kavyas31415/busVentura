@@ -1,0 +1,53 @@
+<nav
+    class="px-4 md:px-14 py-1 md:py-3 flex text-xs md:text-base font-normal items-center justify-between sticky top-0 bg-white z-20 drop-shadow-xl">
+    
+    <!-- navbar left part starts here -->
+    <div class="flex items-center gap-2 md:gap-4">
+        <!-- Logo -->
+        <img class="md:w-[4.5rem] md:h-auto w-12 h-10"
+            src="./assets/logo.png" alt="busVentura Logo">
+
+        <!-- BusVentura Text -->
+        <a (click)="navigateToLandingPage()" class="cursor-pointer text-2xl md:text-4xl font-bold ml-2" style="color: #3d5535;">
+            BusVentura
+        </a>
+    </div>
+
+
+    <div class="flex gap-3">
+        <a (click)="navigate('/virtual')" class="flex flex-col items-center justify-center gap-1 h-10 px-2 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+            <i class="fa-solid fa-panorama text-[#4a4a4a] text-xl"></i>
+            <p class="text-sm md:text-base">Virtual Tours</p>
+        </a>
+          
+        <a (click)="navigate('/hire')" class="flex flex-col items-center justify-center gap-1 h-10 px-2 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+            <i class="fa-solid fa-bus text-[#4a4a4a] text-xl"></i>
+            <p class="text-sm md:text-base">Hire a Bus</p>
+        </a>
+        <a (click)="navigate('/community')" class="flex flex-col items-center justify-center gap-1 h-10 px-2 rounded-lg hover:bg-gray-100 transition duration-300 ease-in-out">
+            <i class="fa-solid fa-users text-[#4a4a4a] text-xl"></i>
+            <p class="text-sm md:text-base">Community</p>
+        </a>
+    </div>
+
+    <!-- navbar right part starts here  -->
+    <div id="google-btn" *ngIf="!isloggedIn"></div>
+    <div class="hidden md:flex items-center gap-3" *ngIf="isloggedIn">
+        <a class="flex items-center justify-center gap-2 h-10 px-2 rounded-lg hover:bg-gray-100">
+            <i class="fa-solid fa-headset text-[#4a4a4a] text-xl"></i>
+            <p>Help</p>
+        </a>
+        <button #elseBlock class="flex items-center justify-center gap-2 h-10 px-2 rounded-lg hover:bg-gray-100" [matMenuTriggerFor]="menu">
+            <i class="fa-regular fa-user text-[#4a4a4a] text-xl"></i>
+            <p>Account</p>
+            <i class="fa-solid fa-angle-down text-[#4a4a4a] text-xl"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>My Trips</button>
+            <button mat-menu-item>Wallet/Cards</button>
+            <button mat-menu-item (click)="navigate('/profile')">My Profile</button>
+            <button mat-menu-item>Wallet</button>
+            <button mat-menu-item (click)="handlelogout()">Sign Out</button>
+        </mat-menu>
+    </div>
+</nav>

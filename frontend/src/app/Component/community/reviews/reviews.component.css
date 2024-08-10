@@ -1,0 +1,115 @@
+.review-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .reviews-section {
+    margin-bottom: 40px; /* Reduced margin for a more compact look */
+  }
+  
+  .reviews-list {
+    display: flex;
+    overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+    gap: 40px; /* Space between review cards */
+    padding: 10px 0; /* Padding for spacing */
+  }
+  
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    width: 250px; /* Slightly larger width for emphasis */
+    height: 250px; /* Larger height for balance */
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #d0f2d5; /* Light green background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .review-card h3 {
+    margin: 0;
+    color: #2e7d32; /* Dark green color */
+    font-size: 1.15rem;
+  }
+  
+  .review-card p {
+    flex-grow: 1;
+    margin: 10px 0;
+    color: #388e3c; /* Medium green color */
+    line-height: 1.5;
+  }
+  
+  .review-card span {
+    font-weight: bold;
+    color: #1b5e20; /* Darker green color */
+    font-size: 1.1rem;
+  }
+  
+  .form-section {
+    border-radius: 12px;
+    padding: 20px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #2e7d32; /* Dark green color */
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    margin-top: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #388e3c; /* Medium green color */
+  }
+  
+  input[type="text"],
+  textarea,
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c8e6c9; /* Light green border */
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #1b5e20; /* Dark green background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2e7d32; /* Slightly lighter green on hover */
+  }
+  

@@ -1,0 +1,39 @@
+/* General dialog styling */
+.dialog-title {
+    text-align: center;
+    color: #4caf50; /* Green color for success */
+    font-size: 1.5rem;
+  }
+  
+  .dialog-content {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .icon-container {
+    font-size: 3rem;
+    color: #4caf50; /* Green color for success icon */
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .dialog-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  button {
+    background-color: #4caf50; /* Green background */
+    color: white;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+  }
+  

@@ -1,0 +1,56 @@
+/* Container for the result section */
+.result-container {
+  width: 100%;
+  max-width: 1600px; /* Adjust as needed */
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Wrapper for the bus cards */
+.buses-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allow the cards to wrap */
+  gap: 1rem; /* Space between cards */
+}
+
+/* Style for each bus card */
+.bus-card {
+  background-color: #ffffff;
+  border: 1px solid #2d5128; /* Border color */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: calc(50% - 1rem); /* Adjust based on desired card width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .bus-card {
+    width: calc(33.333% - 1rem); /* Three columns on medium screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .bus-card {
+    width: calc(25% - 1rem); /* Four columns on large screens */
+  }
+}
+
+/* Ensure images container adapts to content */
+.images-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow images to wrap */
+  gap: 10px; /* Space between images */
+}
+
+.images-container img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 0.5rem; /* Rounded corners for aesthetics */
+}

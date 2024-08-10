@@ -1,0 +1,21 @@
+<div class="tips-container">
+    <!-- Form for adding new tips -->
+    <div class="form-section">
+      <h1 class="title">Add a New Tip</h1>
+      <form (ngSubmit)="addTip(tipForm)" #tipForm="ngForm" class="tip-form">
+        <input type="text" name="title" ngModel placeholder="Tip Title" required />
+        <textarea name="description" ngModel placeholder="Tip Description" required></textarea>
+        <button type="submit">Add Tip</button>
+      </form>
+    </div>
+  
+    <!-- Display tips -->
+    <div class="tips-list">
+      <h1 class="title">Travel Tips</h1>
+      <div class="tip" *ngFor="let tip of tips">
+        <h2>{{ tip.title }}</h2>
+        <p>{{ tip.description }}</p>
+      </div>
+    </div>
+  </div>
+  

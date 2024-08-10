@@ -1,0 +1,37 @@
+<div class="review-page">
+  <div class="reviews-section" >
+    <h1 style = "font-weight:bold">User reviews</h1>
+    <div class="reviews-list">
+      
+      <div class="review-card" *ngFor="let r of reviews">
+        <h3>{{ r.user }}</h3>
+        <p>{{ r.review }}</p>
+        <span>Stars: {{ r.stars }}</span>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h1>Share your Travel Experience with BusVentura</h1>
+
+    <form (ngSubmit)="addReview()">
+      <div class="form-group">
+        <label for="user">User:</label>
+        <input id="user" [(ngModel)]="review.user" name="user" required />
+      </div>
+
+      <div class="form-group">
+        <label for="review">Review:</label>
+        <textarea id="review" [(ngModel)]="review.review" name="review" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="stars">Stars:</label>
+        <input id="stars" type="number" [(ngModel)]="review.stars" name="stars" min="1" max="5" required />
+      </div>
+
+      <button type="submit">Add Review</button>
+    </form>
+  </div>
+</div>
